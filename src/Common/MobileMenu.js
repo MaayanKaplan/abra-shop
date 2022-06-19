@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import LogoImage from "../Images/logo-black.png";
 import closeIcon from "../Images/x-icon.png";
 
