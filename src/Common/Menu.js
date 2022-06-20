@@ -9,7 +9,7 @@ import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
 
 const menuLinks = DefaultMenuConfig;
 
-const WebMenu = ({
+const Menu = ({
   activeId,
   className,
   menuLinkChange,
@@ -79,4 +79,4 @@ const Hamburger = styled.img`
   cursor: pointer;
 `;
 
-export default WebMenu;
+export default Menu;

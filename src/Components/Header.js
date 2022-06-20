@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import WebMenu from "../Common/WebMenu";
+import Menu from "../Common/Menu";
 import LogoImg from "../Images/logo.png";
 import AccountImg from "../Images/account_circle.png";
 
@@ -36,7 +36,7 @@ const HeaderWrapper = styled.header`
   }
 `;
 
-const StyledMenu = styled(WebMenu)`
+const StyledMenu = styled(Menu)`
   @media (max-width: 880px) {
     padding-right: 66px;
     order: -1;

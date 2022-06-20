@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import LogoImage from "../Images/logo-black.png";
 import closeIcon from "../Images/x-icon.png";
+import logoutImage from "../Images/logout.png";
 
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
 
@@ -33,10 +34,8 @@ const MobileMenu = ({ onClose }) => {
               <Rectangle active={activeMenuLink === link.id}></Rectangle>
               <MenuLink
                 key={link.id}
-                //
                 onClick={() => menuLinkChange(link)}
                 active={activeMenuLink === link.id}
-                //
               >
                 {link.name}
               </MenuLink>
@@ -45,6 +44,7 @@ const MobileMenu = ({ onClose }) => {
         })}
       </LinksContainer>
       <LogoutWrapper>
+        <StyledLogoutButton src={logoutImage}></StyledLogoutButton>
         <p>Log out</p>
       </LogoutWrapper>
     </>
@@ -98,10 +98,15 @@ const LogoutWrapper = styled.div`
   position: absolute;
   bottom: 41.5px;
   padding-left: 21.6px;
+  display: flex;
 
   p {
     color: #808285;
   }
+`;
+
+const StyledLogoutButton = styled.img`
+  padding-right: 4px;
 `;
 
 export default MobileMenu;
