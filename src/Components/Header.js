@@ -4,16 +4,6 @@ import WebMenu from "../Common/WebMenu";
 import LogoImg from "../Images/logo.png";
 import AccountImg from "../Images/account_circle.png";
 
-import useMedia from "../Hooks/useMedia";
-
-const defaultMenuConfig = [
-  { id: 1, name: "BestSellers" },
-  { id: 2, name: "Clothing" },
-  { id: 3, name: "Home" },
-  { id: 4, name: "Office" },
-  { id: 5, name: "Sports" },
-];
-
 const DEFAULT_MENU_LINK = 1;
 
 const Header = () => {
@@ -22,17 +12,12 @@ const Header = () => {
     setActiveMenuLink(link.id);
   };
 
-  ////////////////////////////////////////////////////////////////
-  // CHANGES
-  // /////////////////////////////////////////////////////////////
-
   return (
     <HeaderWrapper>
       <StyledLogo src={LogoImg} alt="abra's logo"></StyledLogo>
       <StyledMenu
         activeId={activeMenuLink}
         menuLinkChange={menuLinkChange}
-        menuLinks={defaultMenuConfig}
       ></StyledMenu>
       <StyledAccountIcon src={AccountImg}></StyledAccountIcon>
     </HeaderWrapper>

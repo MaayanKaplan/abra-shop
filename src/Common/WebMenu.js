@@ -5,8 +5,11 @@ import MobileMenu from "../Common/MobileMenu";
 import Drawer from "../Common/Drawer";
 import menuImg from "../Images/menu.png";
 
+import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
+
+const menuLinks = DefaultMenuConfig;
+
 const WebMenu = ({
-  menuLinks,
   activeId,
   className,
   menuLinkChange,
