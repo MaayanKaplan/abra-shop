@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useMedia } from "../Hooks/useMedia";
 import MobileMenu from "../Common/MobileMenu";
 import Drawer from "../Common/Drawer";
-
 import menuImg from "../Images/menu.png";
 
 const WebMenu = ({
