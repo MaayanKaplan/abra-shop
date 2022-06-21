@@ -26,14 +26,14 @@ export const Data = [
     image: BlackBag,
     name: "Black Canvas Bag",
     price: "42 ILS",
-    category: "Sport",
+    category: "Sports",
   },
   { image: WhiteHat, name: "White Hat", price: "64 ILS", category: "Clothing" },
   {
     image: BlackBottle,
     name: "Black Bottle",
     price: "109 ILS",
-    category: "Sport",
+    category: "Sports",
   },
   { image: Mug, name: "White Mug", price: "24 ILS", category: "Home" },
   {
@@ -46,7 +46,7 @@ export const Data = [
     image: WhiteBottle,
     name: "White Bottle",
     price: "109 ILS",
-    category: "Sport",
+    category: "Sports",
   },
   {
     image: BlackPad,

@@ -25,6 +25,7 @@ const Header = () => {
 };
 
 const HeaderWrapper = styled.header`
+  width: 1920px;
   background-color: #1a223e;
   display: flex;
   padding: 21px 0px;

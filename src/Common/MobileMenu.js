@@ -99,6 +99,7 @@ const LogoutWrapper = styled.div`
   bottom: 41.5px;
   padding-left: 21.6px;
   display: flex;
+  cursor: pointer;
 
   p {
     color: #808285;

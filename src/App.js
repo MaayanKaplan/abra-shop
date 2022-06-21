@@ -1,34 +1,29 @@
 import GlobalStyle from "./GlobalStyle";
 import Header from "./Components/Header";
-import WebTitle from "./Common/WebTitle";
-import ItemCard from "./Components/ItemCard";
 import MyCart from "./Components/MyCart";
+import { Route, Routes } from "react-router-dom";
 
-import styled from "styled-components";
+import BestSellers from "./Pages/BestSellers";
+import Clothing from "./Pages/Clothing";
+import Home from "./Pages/Home";
+import Office from "./Pages/Office";
+import Sports from "./Pages/Sports";
 
 function App() {
   return (
     <div className="App">
       <GlobalStyle />
       <Header />
-      <Container>
-        <div>
-          <WebTitle>Best Sellers</WebTitle>
-          <ItemCard></ItemCard>
-        </div>
-        <MyCart></MyCart>
-      </Container>
+      <MyCart />
+      <Routes>
+        <Route path="/bestSellers" element={<BestSellers />} />
+        <Route path="/clothing" element={<Clothing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/office" element={<Office />} />
+        <Route path="/sports" element={<Sports />} />
+      </Routes>
     </div>
   );
 }
-
-const Container = styled.div`
-  display: grid;
-  /* grid-template-columns: repeat(6, 1fr); */
-  grid-template-columns: 5fr 1fr;
-  padding: 0 24px;
-  /* margin-left: 24px;
-  margin-right: 24px; */
-`;
 
 export default App;

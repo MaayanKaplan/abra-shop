@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Data } from "../Utils/Data";
 import Button from "../Common/Button";
 
 const AddItem = (e) => {
@@ -8,12 +7,12 @@ const AddItem = (e) => {
   console.log("add");
 };
 
-const ItemCard = () => {
+const ItemCard = ({ data }) => {
   return (
     <Container>
-      {Data.map((data, key) => {
+      {data.map((data, key) => {
         return (
-          <ItemWrapper>
+          <ItemWrapper key={key}>
             <ImageWrapper src={data.image}></ImageWrapper>
             <SubTitle>{data.name}</SubTitle>
             <Pricing>{data.price}</Pricing>
@@ -28,16 +27,28 @@ const ItemCard = () => {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(292px, 1fr)); */
+
+  /* Flex */
+  /* display: flex;
+  flex-wrap: wrap; */
+
   gap: 24px;
   justify-content: center;
 
   margin-bottom: 117px;
+  margin-right: 24px;
+
+  @media (max-width: 880px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 292px;
 `;
 
 const ImageWrapper = styled.img`

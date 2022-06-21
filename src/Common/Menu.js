@@ -6,6 +6,7 @@ import Drawer from "../Common/Drawer";
 import menuImg from "../Images/menu.png";
 
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
+import { Link } from "react-router-dom";
 
 const menuLinks = DefaultMenuConfig;
 
@@ -44,6 +45,7 @@ const Menu = ({
           menuLinks.map((link) => {
             return (
               <MenuLink
+                to={link.path}
                 key={link.id}
                 onClick={() => menuLinkChange(link)}
                 active={activeId === link.id}
@@ -58,7 +60,7 @@ const Menu = ({
   );
 };
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
   font-size: 20px;
   font-weight: ${(props) => (props.active ? "600" : "normal")};
   text-decoration: none;
@@ -73,6 +75,8 @@ const MenuWrapper = styled.nav`
   font-family: Assistant;
   display: flex;
   gap: 26px;
+  position: sticky;
+  top: 0;
 `;
 
 const Hamburger = styled.img`

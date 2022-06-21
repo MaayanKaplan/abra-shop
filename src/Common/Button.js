@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Button = styled.button`
-  width: ${(props) => (props.small ? "267px" : "292px")};
+  width: 100%;
   height: 42px;
   font-family: Assistant;
   font-size: 18px;
@@ -15,7 +15,6 @@ const Button = styled.button`
   padding: 12px 0;
   border: solid 1px #000;
   background-color: #fff;
-  margin-right: ${(props) => (props.margin ? "24px" : "0")};
 
   &:hover {
     border: solid 1px #000;
