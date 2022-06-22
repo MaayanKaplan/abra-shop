@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LogoImage from "../Images/logo-black.png";
 import closeIcon from "../Images/x-icon.png";
 import logoutImage from "../Images/logout.png";
+import { Link } from "react-router-dom";
 
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
 
@@ -33,6 +34,7 @@ const MobileMenu = ({ onClose }) => {
             <LinkWrapper>
               <Rectangle active={activeMenuLink === link.id}></Rectangle>
               <MenuLink
+                to={link.path}
                 key={link.id}
                 onClick={() => menuLinkChange(link)}
                 active={activeMenuLink === link.id}
@@ -75,13 +77,14 @@ const LinkWrapper = styled.div`
   gap: 4px;
 `;
 
-const MenuLink = styled.a`
+const MenuLink = styled(Link)`
   font-family: Assistant;
   font-size: 20px;
   font-weight: ${(props) => (props.active ? "600" : "normal")};
   color: #1a223e;
   margin-bottom: 26px;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 const Rectangle = styled.span`

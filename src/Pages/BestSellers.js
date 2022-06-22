@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import WebTitle from "../Common/WebTitle";
 import ItemCard from "../Components/ItemCard";
-import MyCart from "../Components/MyCart";
 import { Data } from "../Utils/Data";
 
 const data = Data;
@@ -11,10 +10,9 @@ const BestSellers = () => {
   return (
     <Container>
       <div>
-        <WebTitle>Best Sellers</WebTitle>
+        <WebTitle>Best sellers</WebTitle>
         <ItemCard data={data}></ItemCard>
       </div>
-      <MyCart></MyCart>
     </Container>
   );
 };

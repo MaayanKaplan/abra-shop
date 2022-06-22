@@ -7,10 +7,10 @@ import AccountImg from "../Images/account_circle.png";
 const DEFAULT_MENU_LINK = 1;
 
 const Header = () => {
-  const [activeMenuLink, setActiveMenuLink] = useState(DEFAULT_MENU_LINK);
   const menuLinkChange = (link) => {
     setActiveMenuLink(link.id);
   };
+  const [activeMenuLink, setActiveMenuLink] = useState(DEFAULT_MENU_LINK);
 
   return (
     <HeaderWrapper>
@@ -25,7 +25,6 @@ const Header = () => {
 };
 
 const HeaderWrapper = styled.header`
-  width: 1920px;
   background-color: #1a223e;
   display: flex;
   padding: 21px 0px;

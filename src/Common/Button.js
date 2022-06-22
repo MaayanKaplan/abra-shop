@@ -21,6 +21,14 @@ const Button = styled.button`
     background-color: #000;
     color: #fff;
   }
+
+  @media (max-width: 880px) {
+    width: 160px;
+    height: 34px;
+
+    font-size: 14px;
+    margin: 0 auto;
+  }
 `;
 
 export default Button;

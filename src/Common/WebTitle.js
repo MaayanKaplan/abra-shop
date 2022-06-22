@@ -7,6 +7,12 @@ const Title = styled.h1`
   text-align: left;
   color: #1a223e;
   margin: 64px 0 40px 0;
+
+  @media (max-width: 880px) {
+    font-size: 24px;
+    margin-top: 24px;
+    align-self: center;
+  }
 `;
 
 export default Title;

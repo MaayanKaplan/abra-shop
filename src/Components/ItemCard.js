@@ -49,11 +49,20 @@ const ItemWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 292px;
+
+  @media (max-width: 880px) {
+    width: 160px;
+  }
 `;
 
 const ImageWrapper = styled.img`
   width: 292px;
   height: 292px;
+
+  @media (max-width: 880px) {
+    width: 160px;
+    height: 160px;
+  }
 `;
 
 const SubTitle = styled.p`
@@ -63,6 +72,10 @@ const SubTitle = styled.p`
   text-align: center;
   color: #000;
   margin: 16px 0 8px 0;
+
+  @media (max-width: 880px) {
+    font-size: 16px;
+  }
 `;
 
 const Pricing = styled.p`
@@ -72,6 +85,10 @@ const Pricing = styled.p`
   text-align: center;
   color: #808285;
   margin-bottom: 16px;
+
+  @media (max-width: 880px) {
+    font-size: 14px;
+  }
 `;
 
 export default ItemCard;

@@ -3,6 +3,8 @@ import Header from "./Components/Header";
 import MyCart from "./Components/MyCart";
 import { Route, Routes } from "react-router-dom";
 
+import styled from "styled-components";
+
 import BestSellers from "./Pages/BestSellers";
 import Clothing from "./Pages/Clothing";
 import Home from "./Pages/Home";
@@ -14,16 +16,26 @@ function App() {
     <div className="App">
       <GlobalStyle />
       <Header />
-      <MyCart />
-      <Routes>
-        <Route path="/bestSellers" element={<BestSellers />} />
-        <Route path="/clothing" element={<Clothing />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/office" element={<Office />} />
-        <Route path="/sports" element={<Sports />} />
-      </Routes>
+      <Container>
+        <Routes>
+          <Route path="/bestSellers" element={<BestSellers />} />
+          <Route path="/clothing" element={<Clothing />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/office" element={<Office />} />
+          <Route path="/sports" element={<Sports />} />
+        </Routes>
+        <MyCart />
+      </Container>
     </div>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  display: flex;
+
+  @media (max-width: 880px) {
+    flex-direction: column;
+  }
+`;
