@@ -7,19 +7,15 @@ const AddItem = (e) => {
   console.log("add");
 };
 
-const ItemCard = ({ data }) => {
+const ItemCard = ({ key, name, image, price, ...props }) => {
   return (
     <Container>
-      {data.map((data, key) => {
-        return (
-          <ItemWrapper key={key}>
-            <ImageWrapper src={data.image}></ImageWrapper>
-            <SubTitle>{data.name}</SubTitle>
-            <Pricing>{data.price}</Pricing>
-            <Button onClick={AddItem}>ADD TO BAG</Button>
-          </ItemWrapper>
-        );
-      })}
+      <ItemWrapper key={key}>
+        <ImageWrapper src={image}></ImageWrapper>
+        <SubTitle>{name}</SubTitle>
+        <Pricing>{price}</Pricing>
+        <Button onClick={AddItem}>ADD TO BAG</Button>
+      </ItemWrapper>
     </Container>
   );
 };

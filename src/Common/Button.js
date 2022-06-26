@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
-const Button = styled.button`
+const Button = ({ children, className, ...props }) => {
+  return (
+    <StyledButton {...props} className={className}>
+      {children}
+    </StyledButton>
+  );
+};
+
+const StyledButton = styled.button`
   width: 100%;
-  height: 42px;
+  /* height: 42px; */
   font-family: Assistant;
   font-size: 18px;
-  align-self: stretch;
-  flex-grow: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.72px;
   padding: 12px 0;
   border: solid 1px #000;
   background-color: #fff;
@@ -19,6 +23,12 @@ const Button = styled.button`
   &:hover {
     border: solid 1px #000;
     background-color: #000;
+    color: #fff;
+  }
+
+  &:disabled {
+    border: solid 1px #808080;
+    background-color: #808080;
     color: #fff;
   }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import WebTitle from "../Common/WebTitle";
+import Title from "../Common/Title";
 import Button from "../Common/Button";
 import EmptyImg from "../Images/empty-cart.png";
 
@@ -10,9 +10,27 @@ const MyCart = () => {
   return (
     <>
       <Container>
-        <WebTitle>My cart</WebTitle>
-        <img src={EmptyImg} alt="" /> <TotalWrapper></TotalWrapper>
-        <p>Your cart is empty</p>
+        <Title>My cart</Title>
+        {WantedItems.length === 0 && (
+            <>
+              {WantedItems.map((item) => {
+                return (
+                  <>
+                    <ItemContainer></ItemContainer>
+                    <TotalWrapper>
+                      <p>Subtotal:</p>
+                      <span>172 ILS</span>
+                    </TotalWrapper>
+                  </>
+                );
+              })}
+            </>
+          ) && (
+            <>
+              <img src={EmptyImg} alt="" /> <TotalWrapper></TotalWrapper>
+              <p>Your cart is empty</p>
+            </>
+          )}
         <Button>CHECKOUT</Button>
       </Container>
     </>
@@ -20,12 +38,15 @@ const MyCart = () => {
 };
 
 const Container = styled.div`
-  grid-column: 6 / 7;
-  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
-  padding-left: 24px;
-  padding-right: 24px;
-  /* width: 316px;/ */
+  /* grid-column: 6 / 7; */
+  min-width: 316px;
   height: 1599px;
+  /* margin: 72px 0 0 24px;
+  padding: 40px 24px 837px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+  /* padding-left: 24px;
+  padding-right: 24px; */
+
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -71,9 +92,24 @@ const Container = styled.div`
   }
 `;
 
+const ItemContainer = styled.div``;
+
 const TotalWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+
+  p {
+    margin: 28px 70px 8px 0;
+    font-family: Assistant;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
 `;
 
 export default MyCart;

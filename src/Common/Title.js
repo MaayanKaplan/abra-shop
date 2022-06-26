@@ -12,6 +12,7 @@ const Title = styled.h1`
     font-size: 24px;
     margin-top: 24px;
     align-self: center;
+    /* margin: 36px auto 24px auto; */
   }
 `;
 

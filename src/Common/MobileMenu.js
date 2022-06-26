@@ -16,6 +16,7 @@ const MobileMenu = ({ onClose }) => {
 
   const menuLinkChange = (link) => {
     setActiveMenuLink(link.id);
+    onClose();
   };
 
   return (
