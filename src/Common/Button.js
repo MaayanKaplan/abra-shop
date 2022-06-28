@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   width: 100%;
   /* height: 42px; */
   font-family: Assistant;
+  font-weight: bold;
   font-size: 18px;
   font-weight: 500;
   line-height: 1;

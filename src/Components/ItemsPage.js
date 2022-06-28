@@ -1,49 +1,81 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Title from "../Common/Title";
-import ItemCard from "../Components/ItemCard";
-import { Data } from "../Utils/Data";
+import ItemCard from "./ItemCard";
+import { deviceSize } from "../Utils/constants";
 
-const ItemsPage = ({ category }) => {
-  const [filteredData, setFilteredData] = useState(Data);
+const SERVER_URL = "https://elad-test-1.s3.amazonaws.com/items.json";
+
+const ItemsPage = ({ category, title, ...props }) => {
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    const newData = [Data.filter((item) => item.category === category)];
+    const fetchData = async () => {
+      try {
+        const res = await fetch(SERVER_URL);
+        const data = await res.json();
+        console.log(data);
+        setData(data);
+        return data;
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const newData = data.filter((item) => item.catagories.includes(category));
     setFilteredData(newData);
+    console.log(filteredData);
   }, [category, setFilteredData]);
 
-  <Container>
-    {filteredData.map((item) => {
-      return (
-        <ItemCard
-          key={item.id}
-          image={item.image}
-          name={item.name}
-          price={item.price}
-        />
-      );
-    })}
-  </Container>;
+  return (
+    <Container>
+      <Title>{title}</Title>
+      <ItemsWrapper>
+        {filteredData.map((item) => {
+          return <ItemCard item={item} />;
+        })}
+      </ItemsWrapper>
+    </Container>
+  );
 };
 
-export default ItemsPage;
-
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  /* grid-template-columns: repeat(auto-fit, minmax(292px, 1fr)); */
+  /* padding: 64px 24px 0px 24px; */
+  padding-left: 24px;
+  overflow-y: auto;
+  height: calc(100vh - 78px);
+
+  @media (max-width: ${deviceSize.mobile}) {
+    height: calc(100vh - 393px - 78px);
+    padding: 36px 18px 0px 18px;
+    justify-content: center;
+  }
+`;
+
+const ItemsWrapper = styled.div`
+  /* grid-template-columns: repeat(5, 1fr); */
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1fr, 292px)); */
 
   /* Flex */
-  /* display: flex;
-  flex-wrap: wrap; */
+  display: flex;
+  flex-wrap: wrap;
 
-  gap: 24px;
+  gap: 48px 24px;
   justify-content: center;
-
   margin-bottom: 117px;
   margin-right: 24px;
 
-  @media (max-width: 880px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: ${deviceSize.mobile}) {
+    gap: 20px 18px;
+    margin-bottom: 89px;
+
+    /* grid-template-columns: repeat(2, 1fr); */
   }
 `;
+
+export default ItemsPage;

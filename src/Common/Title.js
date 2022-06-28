@@ -10,7 +10,7 @@ const Title = styled.h1`
 
   @media (max-width: 880px) {
     font-size: 24px;
-    margin-top: 24px;
+    /* margin-top: 24px; */
     align-self: center;
     /* margin: 36px auto 24px auto; */
   }

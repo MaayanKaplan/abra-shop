@@ -1,17 +1,12 @@
 import GlobalStyle from "./GlobalStyle";
 import Header from "./Components/Header";
-import MyCart from "./Components/MyCart";
+import MyCart from "./Components/Cart/MyCart";
+import { deviceSize } from "./Utils/constants";
 import { Route, Routes } from "react-router-dom";
 
 import ItemsPage from "./Components/ItemsPage";
 
 import styled from "styled-components";
-
-// import BestSellers from "./Pages/BestSellers";
-// import Clothing from "./Pages/Clothing";
-// import Home from "./Pages/Home";
-// import Office from "./Pages/Office";
-// import Sports from "./Pages/Sports";
 
 function App() {
   return (
@@ -20,11 +15,26 @@ function App() {
       <Header />
       <Container>
         <Routes>
-          <Route path="/bestSellers" element={<ItemsPage />} />
-          <Route path="/clothing" element={<ItemsPage category="Clothing" />} />
-          <Route path="/home" element={<ItemsPage category="Home" />} />
-          <Route path="/office" element={<ItemsPage category="Office" />} />
-          <Route path="/sports" element={<ItemsPage category="Sports" />} />
+          <Route
+            path="/best-seller"
+            element={<ItemsPage category="best-seller" title="Best Sellers" />}
+          />
+          <Route
+            path="/clothing"
+            element={<ItemsPage category="clothing" title="Clothing" />}
+          />
+          <Route
+            path="/home"
+            element={<ItemsPage category="home" title="Home" />}
+          />
+          <Route
+            path="/office"
+            element={<ItemsPage category="office" title="Office" />}
+          />
+          <Route
+            path="/sports"
+            element={<ItemsPage category="sports" title="Sports" />}
+          />
         </Routes>
         <MyCart />
       </Container>
@@ -36,8 +46,9 @@ export default App;
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
 
-  @media (max-width: 880px) {
-    flex-direction: column;
+  @media (max-width: ${deviceSize.mobile}) {
+    flex-direction: column-reverse;
   }
 `;

@@ -1,88 +1,62 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../Common/Button";
+import { deviceSize } from "../Utils/constants";
 
 const AddItem = (e) => {
   e.preventDefault();
   console.log("add");
 };
 
-const ItemCard = ({ key, name, image, price, ...props }) => {
+const ItemCard = ({ item, ...props }) => {
   return (
-    <Container>
-      <ItemWrapper key={key}>
-        <ImageWrapper src={image}></ImageWrapper>
-        <SubTitle>{name}</SubTitle>
-        <Pricing>{price}</Pricing>
-        <Button onClick={AddItem}>ADD TO BAG</Button>
-      </ItemWrapper>
-    </Container>
+    <ItemWrapper key={item.id}>
+      <ImageWrapper src={item.image}></ImageWrapper>
+      <SubTitle>{item.name}</SubTitle>
+      <Pricing>{item.price} ILS</Pricing>
+      <Button onClick={AddItem}>ADD TO BAG</Button>
+    </ItemWrapper>
   );
 };
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  /* grid-template-columns: repeat(auto-fit, minmax(292px, 1fr)); */
-
-  /* Flex */
-  /* display: flex;
-  flex-wrap: wrap; */
-
-  gap: 24px;
-  justify-content: center;
-
-  margin-bottom: 117px;
-  margin-right: 24px;
-
-  @media (max-width: 880px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
 
 const ItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  font-family: Assistant;
+  font-size: 20px;
+  text-align: center;
   width: 292px;
 
-  @media (max-width: 880px) {
+  @media (max-width: ${deviceSize.mobile}) {
     width: 160px;
+    font-size: 16px;
   }
 `;
 
 const ImageWrapper = styled.img`
   width: 292px;
   height: 292px;
+  display: block;
 
-  @media (max-width: 880px) {
+  @media (max-width: ${deviceSize.mobile}) {
     width: 160px;
     height: 160px;
   }
 `;
 
 const SubTitle = styled.p`
-  font-family: Assistant;
-  font-size: 20px;
-  line-height: 1;
-  text-align: center;
-  color: #000;
   margin: 16px 0 8px 0;
 
-  @media (max-width: 880px) {
+  @media (max-width: ${deviceSize.mobile}) {
     font-size: 16px;
   }
 `;
 
 const Pricing = styled.p`
-  font-family: Assistant;
-  font-size: 20px;
-  line-height: 1;
-  text-align: center;
   color: #808285;
   margin-bottom: 16px;
 
-  @media (max-width: 880px) {
+  @media (max-width: ${deviceSize.mobile}) {
     font-size: 14px;
   }
 `;

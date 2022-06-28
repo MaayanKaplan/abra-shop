@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Menu from "../Common/Menu";
-import LogoImg from "../Images/logo.png";
-import AccountImg from "../Images/account_circle.png";
+import LogoImg from "../Images/logo.svg";
+import AccountImg from "../Images/account-circle.svg";
 
 const DEFAULT_MENU_LINK = 1;
 
