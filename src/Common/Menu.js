@@ -4,7 +4,6 @@ import { useMedia } from "../Hooks/useMedia";
 import MobileMenu from "../Common/MobileMenu";
 import Drawer from "../Common/Drawer";
 import menuImg from "../Images/menu.png";
-
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
 import { Link } from "react-router-dom";
 
@@ -36,7 +35,11 @@ const Menu = ({
             ></Hamburger>
             {isDrawerOpen && (
               <Drawer>
-                <MobileMenu onClose={() => setIsDrawerOpen(false)} />
+                <MobileMenu
+                  onClose={() => setIsDrawerOpen(false)}
+                  activeId={activeId}
+                  menuLinkChange={menuLinkChange}
+                />
               </Drawer>
             )}
           </>
@@ -74,6 +77,7 @@ const MenuLink = styled(Link)`
 const MenuWrapper = styled.nav`
   font-family: Assistant;
   display: flex;
+  align-items: center;
   gap: 26px;
   position: sticky;
   top: 0;

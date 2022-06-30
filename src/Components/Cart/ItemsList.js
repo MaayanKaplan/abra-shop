@@ -30,18 +30,18 @@ export const ItemsList = () => {
         image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
         quantity={5}
       />
-      {/* <CartItem
+      <CartItem
         name="Black Bottle"
         price={10}
         image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
         quantity={5}
-      /> */}
-      {/* <CartItem
+      />
+      <CartItem
         name="Black Bottle"
         price={10}
         image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
         quantity={5}
-      /> */}
+      />
     </StyledCartItemsWrapper>
   );
 };
@@ -52,14 +52,17 @@ const StyledCartItemsWrapper = styled.div`
   gap: 26px;
   margin-top: 34px;
   overflow-y: auto;
+  margin-bottom: 177px;
 
   @media (max-width: ${deviceSize.mobile}) {
     padding: 0px 18px;
     margin-top: 17px;
     gap: 18px;
     flex-direction: row;
+    min-width: 375px;
     overflow-x: auto;
     overflow-y: hidden;
+    margin-bottom: 0px;
   }
 `;
 

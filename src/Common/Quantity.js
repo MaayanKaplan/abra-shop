@@ -30,8 +30,14 @@ const QuantityWrapper = styled.div`
   font-size: 20px;
   color: #808285;
   margin-top: auto;
+
   @media (max-width: ${deviceSize.mobile}) {
     margin-top: 12px;
+    font-size: 16px;
+
+    span {
+      margin: 0 2px 0 2px;
+    }
   }
 `;
 

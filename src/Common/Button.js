@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { deviceSize } from "../Utils/constants";
 
 const Button = ({ children, className, ...props }) => {
   return (
@@ -10,7 +11,7 @@ const Button = ({ children, className, ...props }) => {
 
 const StyledButton = styled.button`
   width: 100%;
-  /* height: 42px; */
+  height: 42px;
   font-family: Assistant;
   font-weight: bold;
   font-size: 18px;
@@ -33,12 +34,13 @@ const StyledButton = styled.button`
     color: #fff;
   }
 
-  @media (max-width: 880px) {
-    width: 160px;
+  @media (max-width: ${deviceSize.mobile}) {
+    width: 100%;
     height: 34px;
-
     font-size: 14px;
-    margin: 0 auto;
+    line-height: 1.29;
+    letter-spacing: 0.56px;
+    padding: 8px 0;
   }
 `;
 

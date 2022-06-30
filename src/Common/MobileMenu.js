@@ -1,24 +1,13 @@
-import { useState } from "react";
 import styled from "styled-components";
 import LogoImage from "../Images/logo-black.png";
 import closeIcon from "../Images/x-icon.png";
-import logoutImage from "../Images/logout.png";
+import logoutImage from "../Images/logout.svg";
 import { Link } from "react-router-dom";
-
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
 
 const menuLinks = DefaultMenuConfig;
 
-const DEFAULT_MENU_LINK = 1;
-
-const MobileMenu = ({ onClose }) => {
-  const [activeMenuLink, setActiveMenuLink] = useState(DEFAULT_MENU_LINK);
-
-  const menuLinkChange = (link) => {
-    setActiveMenuLink(link.id);
-    onClose();
-  };
-
+const MobileMenu = ({ onClose, activeId, menuLinkChange, ...props }) => {
   return (
     <>
       <DrawerMenuWrapper>
@@ -33,12 +22,15 @@ const MobileMenu = ({ onClose }) => {
         {menuLinks.map((link) => {
           return (
             <LinkWrapper>
-              <Rectangle active={activeMenuLink === link.id}></Rectangle>
+              <Rectangle active={activeId === link.id}></Rectangle>
               <MenuLink
                 to={link.path}
                 key={link.id}
-                onClick={() => menuLinkChange(link)}
-                active={activeMenuLink === link.id}
+                onClick={() => {
+                  menuLinkChange(link);
+                  onClose();
+                }}
+                active={activeId === link.id}
               >
                 {link.name}
               </MenuLink>

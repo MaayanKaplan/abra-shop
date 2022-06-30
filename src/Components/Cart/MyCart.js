@@ -3,58 +3,34 @@ import { deviceSize } from "../../Utils/constants";
 import EmptyCart from "../Cart/EmptyCart";
 import ItemsList from "../Cart/ItemsList";
 import Button from "../../Common/Button";
+import Title from "../../Common/Title";
+
 const Cart = () => {
   return (
     <StyledCartWrapper>
       <CartItemsWrapper>
         <StyledCartTitle>My cart</StyledCartTitle>
-        <p>Items are reserved for 60 minutes</p>
+        <StyledDescription>Items are reserved for 60 minutes</StyledDescription>
+
         <ItemsList></ItemsList>
 
         {/* <EmptyCart /> */}
         <StyledCheckoutWrapper>
           <StyledTotalWrapper>
-            <StyledSubtotal>SubTotal</StyledSubtotal>
+            <StyledSubtotal>SubTotal:</StyledSubtotal>
             <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
           </StyledTotalWrapper>
-          <StyledCheckoutButton>CHECKOUT</StyledCheckoutButton>
+          <StyledCheckoutButton disabled>CHECKOUT</StyledCheckoutButton>
         </StyledCheckoutWrapper>
       </CartItemsWrapper>
     </StyledCartWrapper>
   );
 };
 
-const StyledCheckoutButton = styled(Button)`
-  margin-bottom: 24px;
-`;
-
-const CartItemsWrapper = styled.div`
-  @media (min-width: ${deviceSize.desktop}) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-  }
-`;
-const StyledCheckoutWrapper = styled.div`
-  margin-top: 5px;
-  @media (max-width: ${deviceSize.mobile}) {
-    padding: 0px 18px;
-  }
-`;
-const StyledTotalWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-`;
-
-const StyledSubtotal = styled.span``;
-
-const StyledSubtotalPrice = styled.span``;
-
 const StyledCartWrapper = styled.div`
   flex-basis: calc(316px - (24px * 2));
-  min-width: calc(316px - (24px * 2));
+  /* min-width: calc(316px - (24px * 2)); */
+  min-width: calc(316px - 6px);
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
   background-color: #fff;
   padding: 40px 24px 0;
@@ -71,14 +47,64 @@ const StyledCartWrapper = styled.div`
   }
 `;
 
-const StyledCartTitle = styled.h1`
-  font-family: Assistant;
-  font-size: 40px;
-  font-weight: bold;
-  color: #1a223e;
+const StyledCartTitle = styled(Title)`
   text-align: left;
+  margin: 0 81px 9px 0;
 
   @media (max-width: ${deviceSize.mobile}) {
+    text-align: center;
+    margin: 0 0 17px 0;
   }
 `;
+
+const StyledDescription = styled.span`
+  font-size: 16px;
+
+  @media (max-width: ${deviceSize.mobile}) {
+    display: none;
+  }
+`;
+
+const CartItemsWrapper = styled.div`
+  @media (min-width: ${deviceSize.desktop}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+`;
+const StyledCheckoutWrapper = styled.div`
+  @media (max-width: ${deviceSize.mobile}) {
+    padding: 0px 18px;
+  }
+`;
+const StyledTotalWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 24px;
+
+  @media (max-width: ${deviceSize.mobile}) {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+`;
+
+const StyledSubtotal = styled.span``;
+
+const StyledSubtotalPrice = styled.span``;
+
+const StyledCheckoutButton = styled(Button)`
+  margin-bottom: 24px;
+
+  @media (max-width: ${deviceSize.mobile}) {
+    width: 100%;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.72px;
+    margin-bottom: 24px;
+  }
+`;
+
 export default Cart;

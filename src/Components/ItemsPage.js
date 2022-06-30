@@ -44,7 +44,6 @@ const ItemsPage = ({ category, title, ...props }) => {
 };
 
 const Container = styled.div`
-  /* padding: 64px 24px 0px 24px; */
   padding-left: 24px;
   overflow-y: auto;
   height: calc(100vh - 78px);
@@ -68,7 +67,6 @@ const ItemsWrapper = styled.div`
   gap: 48px 24px;
   justify-content: center;
   margin-bottom: 117px;
-  margin-right: 24px;
 
   @media (max-width: ${deviceSize.mobile}) {
     gap: 20px 18px;

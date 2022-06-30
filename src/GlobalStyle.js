@@ -10,10 +10,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     }
   /*
-    2. Remove default margin
+    2. Remove default margin and padding.
   */
   * {
     margin: 0;
+    padding: 0;
     }
   /*
     3. Allow percentage-based heights in the application
@@ -82,10 +83,7 @@ const GlobalStyle = createGlobalStyle`
     11. General body styling
   */
   body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    color: #1c1c1c;
+overflow: hidden;
   }
 `;
 

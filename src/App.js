@@ -3,12 +3,16 @@ import Header from "./Components/Header";
 import MyCart from "./Components/Cart/MyCart";
 import { deviceSize } from "./Utils/constants";
 import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
 
 import ItemsPage from "./Components/ItemsPage";
 
 import styled from "styled-components";
 
 function App() {
+  const [items, setItems] = useState([]);
+  const AppContext = React.createContext({ items, setItems });
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -17,7 +21,7 @@ function App() {
         <Routes>
           <Route
             path="/best-seller"
-            element={<ItemsPage category="best-seller" title="Best Sellers" />}
+            element={<ItemsPage category="best-seller" title="Best sellers" />}
           />
           <Route
             path="/clothing"

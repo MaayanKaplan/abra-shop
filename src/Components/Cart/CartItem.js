@@ -19,17 +19,18 @@ const CartItem = ({ name, price, image, quantity }) => {
 
 const StyledCartItemWrapper = styled.div`
   font-family: Assistant;
-
   font-size: 20px;
   line-height: 1;
   display: flex;
-  gap: 11px;
+  /* gap: 11px; */
   position: relative;
+
   @media (max-width: ${deviceSize.mobile}) {
-    gap: 0px;
-    width: 125px;
+    /* gap: 0px; */
+    /* width: 125px; */
     flex-direction: column;
     font-size: 16px;
+    margin-bottom: 28px;
   } ;
 `;
 
@@ -38,8 +39,9 @@ const StyledCartItemImage = styled.img`
   height: 100px;
   @media (max-width: ${deviceSize.mobile}) {
     position: relative;
-    width: 125px;
-    height: 125px;
+    min-width: 125px;
+    min-height: 125px;
+    /* object-fit: contain; */
   } ;
 `;
 
@@ -64,14 +66,6 @@ const StyledCartItemPrice = styled.span`
   color: #808285;
   @media (max-width: ${deviceSize.mobile}) {
     font-size: 14px;
-  }
-`;
-
-const StyledCartItemQuantity = styled.span`
-  color: #808285;
-  margin-top: auto;
-  @media (max-width: ${deviceSize.mobile}) {
-    margin-top: 12px;
   }
 `;
 
