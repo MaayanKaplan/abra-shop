@@ -6,7 +6,7 @@ import { deviceSize } from "../Utils/constants";
 
 const SERVER_URL = "https://elad-test-1.s3.amazonaws.com/items.json";
 
-const ItemsPage = ({ category, title, ...props }) => {
+const ItemsPage = ({ category, title, items, ...props }) => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -15,7 +15,6 @@ const ItemsPage = ({ category, title, ...props }) => {
       try {
         const res = await fetch(SERVER_URL);
         const data = await res.json();
-        console.log(data);
         setData(data);
         return data;
       } catch (error) {
@@ -28,17 +27,22 @@ const ItemsPage = ({ category, title, ...props }) => {
   useEffect(() => {
     const newData = data.filter((item) => item.catagories.includes(category));
     setFilteredData(newData);
-    console.log(filteredData);
-  }, [category, setFilteredData]);
+  }, [category, setFilteredData, data]);
 
   return (
     <Container>
-      <Title>{title}</Title>
-      <ItemsWrapper>
-        {filteredData.map((item) => {
-          return <ItemCard item={item} />;
-        })}
-      </ItemsWrapper>
+      {filteredData.length ? (
+        <>
+          <Title>{title}</Title>
+          <ItemsWrapper>
+            {filteredData.map((item) => {
+              return <ItemCard item={item} />;
+            })}
+          </ItemsWrapper>
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </Container>
   );
 };
@@ -57,8 +61,8 @@ const Container = styled.div`
 
 const ItemsWrapper = styled.div`
   /* grid-template-columns: repeat(5, 1fr); */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(1fr, 292px)); */
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit, minmax(1fr, 292px)); */
 
   /* Flex */
   display: flex;

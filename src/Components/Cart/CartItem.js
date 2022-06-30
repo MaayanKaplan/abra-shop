@@ -3,16 +3,18 @@ import DeleteButtonImage from "../../Images/delete.svg";
 import { deviceSize } from "../../Utils/constants";
 import Quantity from "../../Common/Quantity";
 
-const CartItem = ({ name, price, image, quantity }) => {
+const CartItem = ({ item, ...props }) => {
+  const deleteItem = () => {};
+
   return (
     <StyledCartItemWrapper>
-      <StyledCartItemImage src={image}></StyledCartItemImage>
+      <StyledCartItemImage src={item.image}></StyledCartItemImage>
       <StyledCartItemDetailsWrapper>
-        <StyledCartItemTitle>{name}</StyledCartItemTitle>
-        <StyledCartItemPrice>{price} ILS</StyledCartItemPrice>
+        <StyledCartItemTitle>{item.name}</StyledCartItemTitle>
+        <StyledCartItemPrice>{item.price} ILS</StyledCartItemPrice>
         <Quantity />
       </StyledCartItemDetailsWrapper>
-      <StyledDeleteButtonImage src={DeleteButtonImage} />
+      <StyledDeleteButtonImage onClick={deleteItem} src={DeleteButtonImage} />
     </StyledCartItemWrapper>
   );
 };
@@ -41,6 +43,7 @@ const StyledCartItemImage = styled.img`
     position: relative;
     min-width: 125px;
     min-height: 125px;
+    display: inline-block;
     /* object-fit: contain; */
   } ;
 `;
@@ -49,6 +52,7 @@ const StyledCartItemDetailsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding-left: 11px;
   @media (max-width: ${deviceSize.mobile}) {
     gap: 0px;
   }

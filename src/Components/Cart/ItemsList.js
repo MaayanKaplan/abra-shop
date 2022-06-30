@@ -3,10 +3,13 @@ import styled from "styled-components";
 import CartItem from "./CartItem";
 import { deviceSize } from "../../Utils/constants";
 
-export const ItemsList = () => {
+export const ItemsList = ({ items, ...props }) => {
   return (
     <StyledCartItemsWrapper>
-      <CartItem
+      {items.map((item) => (
+        <CartItem item={item} />
+      ))}
+      {/* <CartItem
         name="Black Bottle"
         price={10}
         image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
@@ -41,7 +44,7 @@ export const ItemsList = () => {
         price={10}
         image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
         quantity={5}
-      />
+      /> */}
     </StyledCartItemsWrapper>
   );
 };

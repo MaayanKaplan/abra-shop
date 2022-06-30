@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { deviceSize } from "../../Utils/constants";
 import EmptyCart from "../Cart/EmptyCart";
@@ -5,19 +6,24 @@ import ItemsList from "../Cart/ItemsList";
 import Button from "../../Common/Button";
 import Title from "../../Common/Title";
 
-const Cart = () => {
+import { AppContext } from "../../App";
+
+const MyCart = ({ items, ...props }) => {
+  // const items = useContext(AppContext);
+  console.log(items);
+
   return (
     <StyledCartWrapper>
       <CartItemsWrapper>
         <StyledCartTitle>My cart</StyledCartTitle>
         <StyledDescription>Items are reserved for 60 minutes</StyledDescription>
+        <ItemsList items={items} />
 
-        <ItemsList></ItemsList>
+        {!items.length && <EmptyCart />}
 
-        {/* <EmptyCart /> */}
         <StyledCheckoutWrapper>
           <StyledTotalWrapper>
-            <StyledSubtotal>SubTotal:</StyledSubtotal>
+            <StyledSubtotal>Subtotal:</StyledSubtotal>
             <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
           </StyledTotalWrapper>
           <StyledCheckoutButton disabled>CHECKOUT</StyledCheckoutButton>
@@ -59,7 +65,7 @@ const StyledCartTitle = styled(Title)`
 
 const StyledDescription = styled.span`
   font-size: 16px;
-
+  display: ${(props) => (props.items === [] ? "block" : "none")};
   @media (max-width: ${deviceSize.mobile}) {
     display: none;
   }
@@ -83,6 +89,7 @@ const StyledTotalWrapper = styled.div`
   justify-content: space-between;
   font-size: 16px;
   margin-bottom: 24px;
+  display: ${(props) => (props.items === [] ? "block" : "none")};
 
   @media (max-width: ${deviceSize.mobile}) {
     font-size: 16px;
@@ -107,4 +114,4 @@ const StyledCheckoutButton = styled(Button)`
   }
 `;
 
-export default Cart;
+export default MyCart;

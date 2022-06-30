@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "../Common/Button";
 import { deviceSize } from "../Utils/constants";
-
-const AddItem = (e) => {
-  e.preventDefault();
-  console.log("add");
-};
+import { AppContext } from "../App";
 
 const ItemCard = ({ item, ...props }) => {
+  const setItems = useContext(AppContext);
+
+  const addItem = () => {
+    setItems((prev) => [...prev, item]);
+  };
+
+  console.log(setItems);
+
   return (
     <ItemWrapper key={item.id}>
       <ImageWrapper src={item.image}></ImageWrapper>
       <SubTitle>{item.name}</SubTitle>
       <Pricing>{item.price} ILS</Pricing>
-      <Button onClick={AddItem}>ADD TO BAG</Button>
+      <Button onClick={addItem}>ADD TO BAG</Button>
     </ItemWrapper>
   );
 };

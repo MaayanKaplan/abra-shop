@@ -31,13 +31,13 @@ const QuantityWrapper = styled.div`
   color: #808285;
   margin-top: auto;
 
+  span {
+    margin: 0 2px 0 2px;
+  }
+
   @media (max-width: ${deviceSize.mobile}) {
     margin-top: 12px;
     font-size: 16px;
-
-    span {
-      margin: 0 2px 0 2px;
-    }
   }
 `;
 

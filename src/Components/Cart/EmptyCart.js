@@ -28,6 +28,9 @@ const StyledEmptyCartWrapper = styled.div`
 
   @media (max-width: ${deviceSize.mobile}) {
     gap: 16px;
+    position: relative;
+    margin-bottom: 56px;
+    margin-top: 46px;
   } ;
 `;
 
@@ -44,5 +47,9 @@ const StyledEmptyCartImage = styled.img`
 const StyledEmptyCartMessage = styled.span`
   font-size: 16px;
   color: #000;
+
+  @media (max-width: ${deviceSize.mobile}) {
+    font-size: 14px;
+  }
 `;
 export default EmptyCart;
