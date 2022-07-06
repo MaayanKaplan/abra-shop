@@ -48,7 +48,7 @@ function App() {
               element={<ItemsPage category="sports" title="Sports" />}
             />
           </Routes>
-          <MyCart items={items} />
+          <MyCart items={items} setItems={setItems} />
         </Container>
       </AppContext.Provider>
     </div>

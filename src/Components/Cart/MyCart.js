@@ -8,7 +8,7 @@ import Title from "../../Common/Title";
 
 import { AppContext } from "../../App";
 
-const MyCart = ({ items, ...props }) => {
+const MyCart = ({ items, setItems, ...props }) => {
   // const items = useContext(AppContext);
   console.log(items);
 
@@ -17,7 +17,7 @@ const MyCart = ({ items, ...props }) => {
       <CartItemsWrapper>
         <StyledCartTitle>My cart</StyledCartTitle>
         <StyledDescription>Items are reserved for 60 minutes</StyledDescription>
-        <ItemsList items={items} />
+        <ItemsList items={items} setItems={setItems} />
 
         {!items.length && <EmptyCart />}
 

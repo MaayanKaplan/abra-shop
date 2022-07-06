@@ -3,8 +3,10 @@ import DeleteButtonImage from "../../Images/delete.svg";
 import { deviceSize } from "../../Utils/constants";
 import Quantity from "../../Common/Quantity";
 
-const CartItem = ({ item, ...props }) => {
-  const deleteItem = () => {};
+const CartItem = ({ item, setItems, ...props }) => {
+  const deleteItem = () => {
+    setItems((prev) => prev.filter((prevItem) => prevItem.id !== item.id));
+  };
 
   return (
     <StyledCartItemWrapper>

@@ -3,48 +3,12 @@ import styled from "styled-components";
 import CartItem from "./CartItem";
 import { deviceSize } from "../../Utils/constants";
 
-export const ItemsList = ({ items, ...props }) => {
+export const ItemsList = ({ items, setItems, ...props }) => {
   return (
     <StyledCartItemsWrapper>
       {items.map((item) => (
-        <CartItem item={item} />
+        <CartItem item={item} setItems={setItems} />
       ))}
-      {/* <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      />
-      <CartItem
-        name="Black Bottle"
-        price={10}
-        image={"https://elad-test-1.s3.amazonaws.com/tshirt.png"}
-        quantity={5}
-      /> */}
     </StyledCartItemsWrapper>
   );
 };
