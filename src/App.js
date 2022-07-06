@@ -3,15 +3,19 @@ import Header from "./Components/Header";
 import MyCart from "./Components/Cart/MyCart";
 import { deviceSize } from "./Utils/constants";
 import { Route, Routes } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 
 import ItemsPage from "./Components/ItemsPage";
 import styled from "styled-components";
 
-export const AppContext = React.createContext({
-  items: [],
-  setItems: () => [],
-});
+import { StoreProvider } from "./Services/Provider";
+
+// export const AppContext = React.createContext({
+//   items: [],
+//   setItems: () => [],
+// });
+
+export const AppContext = createContext([]);
 
 function App() {
   const [items, setItems] = useState([]);
@@ -22,7 +26,7 @@ function App() {
       <GlobalStyle />
       <Header />
 
-      <AppContext.Provider value={(items, setItems)}>
+      <AppContext.Provider value={[items, setItems]}>
         <Container>
           <Routes>
             <Route
