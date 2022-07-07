@@ -38,10 +38,10 @@ const ItemsPage = ({ category, title, ...props }) => {
           </ItemsWrapper>
         </>
       ) : (
-        <>
-          <Spinner />
+        <SpinnerContainer>
           <p>Loading...</p>
-        </>
+          <Spinner />
+        </SpinnerContainer>
       )}
     </Container>
   );
@@ -77,6 +77,22 @@ const ItemsWrapper = styled.div`
     margin-bottom: 89px;
 
     /* grid-template-columns: repeat(2, 1fr); */
+  }
+`;
+
+const SpinnerContainer = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 37.5%;
+
+  @media (max-width: ${deviceSize.mobile}) {
+    top: 70%;
+  }
+
+  p {
+    text-align: center;
+    font-size: 20px;
+    font-family: Assistant;
   }
 `;
 

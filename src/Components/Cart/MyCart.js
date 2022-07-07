@@ -4,22 +4,20 @@ import EmptyCart from "../Cart/EmptyCart";
 import ItemsList from "./CartItemsList";
 import Button from "../../Common/Button";
 import Title from "../../Common/Title";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { StoreContext } from "../../Services/Provider";
 
 const MyCart = () => {
   const { cart, checkout } = useContext(StoreContext);
 
-  const getCartSubtotal = () => {
+  const getCartSubtotal = useMemo(() => {
     let sum = 0;
     for (const item of cart) {
       sum += item.quantity * item.price;
     }
 
     return sum;
-  };
-
-  const sum = getCartSubtotal();
+  }, [cart]);
 
   return (
     <StyledCartWrapper>
@@ -37,7 +35,7 @@ const MyCart = () => {
             <StyledCheckoutWrapper>
               <StyledTotalWrapper>
                 <StyledSubtotal>Subtotal:</StyledSubtotal>
-                <StyledSubtotalPrice>{sum} ILS</StyledSubtotalPrice>
+                <StyledSubtotalPrice>{getCartSubtotal} ILS</StyledSubtotalPrice>
               </StyledTotalWrapper>
               <StyledCheckoutButton onClick={checkout}>
                 CHECKOUT

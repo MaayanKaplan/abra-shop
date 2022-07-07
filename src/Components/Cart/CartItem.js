@@ -96,22 +96,4 @@ const StyledDeleteButtonImage = styled.img`
   } ;
 `;
 
-//  **** CHANGES ****** //
-
-const StyledCartItemQuantity = styled.span`
-  color: #808285;
-  margin-top: auto;
-  @media (max-width: ${deviceSize.mobile}) {
-    margin-top: 12px;
-  }
-`;
-
-const StyledQuantity = styled.button`
-  cursor: pointer;
-  color: #808285;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-`;
-
 export default CartItem;
