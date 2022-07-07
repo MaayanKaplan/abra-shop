@@ -1,13 +1,25 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import CartItem from "./CartItem";
 import { deviceSize } from "../../Utils/constants";
+import { StoreContext } from "../../Services/Provider";
 
-export const ItemsList = ({ items, setItems, ...props }) => {
+export const ItemsList = () => {
+  const { cart, addItemToCart, deleteItemFromCart } = useContext(StoreContext);
+
   return (
     <StyledCartItemsWrapper>
-      {items.map((item) => (
-        <CartItem item={item} setItems={setItems} />
+      {cart.map((item) => (
+        <CartItem
+          key={item.id}
+          image={item.image}
+          name={item.name}
+          price={item.price}
+          quantity={item.quantity}
+          deleteItem={deleteItemFromCart(item, true)}
+          decrementQuantity={deleteItemFromCart(item)}
+          incrementQuantity={addItemToCart(item)}
+        />
       ))}
     </StyledCartItemsWrapper>
   );

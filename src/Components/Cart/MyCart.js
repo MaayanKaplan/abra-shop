@@ -1,33 +1,51 @@
-import { useContext } from "react";
 import styled from "styled-components";
 import { deviceSize } from "../../Utils/constants";
 import EmptyCart from "../Cart/EmptyCart";
 import ItemsList from "../Cart/ItemsList";
 import Button from "../../Common/Button";
 import Title from "../../Common/Title";
+import { useContext } from "react";
+import { StoreContext } from "../../Services/Provider";
 
-import { AppContext } from "../../App";
+const MyCart = () => {
+  const { cart, checkout } = useContext(StoreContext);
+  console.log(cart);
 
-const MyCart = ({ items, setItems, ...props }) => {
-  // const items = useContext(AppContext);
-  console.log(items);
+  const getCartSubtotal = () => {
+    let sum = 0;
+    for (const item of cart) {
+      sum += item.quantity * item.price;
+    }
+
+    return sum;
+  };
+
+  const sum = getCartSubtotal();
 
   return (
     <StyledCartWrapper>
       <CartItemsWrapper>
         <StyledCartTitle>My cart</StyledCartTitle>
-        <StyledDescription>Items are reserved for 60 minutes</StyledDescription>
-        <ItemsList items={items} setItems={setItems} />
 
-        {!items.length && <EmptyCart />}
-
-        <StyledCheckoutWrapper>
-          <StyledTotalWrapper>
-            <StyledSubtotal>Subtotal:</StyledSubtotal>
-            <StyledSubtotalPrice>176 ILS</StyledSubtotalPrice>
-          </StyledTotalWrapper>
-          <StyledCheckoutButton disabled>CHECKOUT</StyledCheckoutButton>
-        </StyledCheckoutWrapper>
+        {!cart.length ? (
+          <EmptyCart />
+        ) : (
+          <>
+            <StyledDescription>
+              Items are reserved for 60 minutes
+            </StyledDescription>
+            <ItemsList cart={cart} />
+            <StyledCheckoutWrapper>
+              <StyledTotalWrapper>
+                <StyledSubtotal>Subtotal:</StyledSubtotal>
+                <StyledSubtotalPrice>{sum} ILS</StyledSubtotalPrice>
+              </StyledTotalWrapper>
+              <StyledCheckoutButton onClick={checkout}>
+                CHECKOUT
+              </StyledCheckoutButton>
+            </StyledCheckoutWrapper>
+          </>
+        )}
       </CartItemsWrapper>
     </StyledCartWrapper>
   );
@@ -65,7 +83,7 @@ const StyledCartTitle = styled(Title)`
 
 const StyledDescription = styled.span`
   font-size: 16px;
-  display: ${(props) => (props.items === [] ? "block" : "none")};
+
   @media (max-width: ${deviceSize.mobile}) {
     display: none;
   }
@@ -89,7 +107,6 @@ const StyledTotalWrapper = styled.div`
   justify-content: space-between;
   font-size: 16px;
   margin-bottom: 24px;
-  display: ${(props) => (props.items === [] ? "block" : "none")};
 
   @media (max-width: ${deviceSize.mobile}) {
     font-size: 16px;

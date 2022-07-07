@@ -3,18 +3,27 @@ import DeleteButtonImage from "../../Images/delete.svg";
 import { deviceSize } from "../../Utils/constants";
 import Quantity from "../../Common/Quantity";
 
-const CartItem = ({ item, setItems, ...props }) => {
-  const deleteItem = () => {
-    setItems((prev) => prev.filter((prevItem) => prevItem.id !== item.id));
-  };
-
+const CartItem = ({
+  image,
+  name,
+  price,
+  quantity,
+  deleteItem,
+  decrementQuantity,
+  incrementQuantity,
+  ...props
+}) => {
   return (
     <StyledCartItemWrapper>
-      <StyledCartItemImage src={item.image}></StyledCartItemImage>
+      <StyledCartItemImage src={image}></StyledCartItemImage>
       <StyledCartItemDetailsWrapper>
-        <StyledCartItemTitle>{item.name}</StyledCartItemTitle>
-        <StyledCartItemPrice>{item.price} ILS</StyledCartItemPrice>
-        <Quantity />
+        <StyledCartItemTitle>{name}</StyledCartItemTitle>
+        <StyledCartItemPrice>{price} ILS</StyledCartItemPrice>
+        <Quantity
+        // quantity={quantity}
+        // decrementQuantity={decrementQuantity}
+        // incrementQuantity={incrementQuantity}
+        />
       </StyledCartItemDetailsWrapper>
       <StyledDeleteButtonImage onClick={deleteItem} src={DeleteButtonImage} />
     </StyledCartItemWrapper>

@@ -18,6 +18,13 @@ function App() {
           <Container>
             <Routes>
               <Route
+                path="/"
+                element={
+                  <ItemsPage category="best-seller" title="Best sellers" />
+                }
+              />
+
+              <Route
                 path="/best-seller"
                 element={
                   <ItemsPage category="best-seller" title="Best sellers" />
