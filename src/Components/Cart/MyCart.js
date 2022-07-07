@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { deviceSize } from "../../Utils/constants";
 import EmptyCart from "../Cart/EmptyCart";
-import ItemsList from "../Cart/ItemsList";
+import ItemsList from "./CartItemsList";
 import Button from "../../Common/Button";
 import Title from "../../Common/Title";
 import { useContext } from "react";
@@ -9,7 +9,6 @@ import { StoreContext } from "../../Services/Provider";
 
 const MyCart = () => {
   const { cart, checkout } = useContext(StoreContext);
-  console.log(cart);
 
   const getCartSubtotal = () => {
     let sum = 0;

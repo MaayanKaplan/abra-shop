@@ -6,7 +6,6 @@ export const StoreContext = createContext([]);
 export const StoreProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -20,19 +19,10 @@ export const StoreProvider = ({ children }) => {
     }
   };
 
-  console.log(items);
-
-  // const addItemToCart = (item) => {
-  //   setCart((prev) => [...prev, item]);
-  // };
-
-  // const deleteItemFromCart = (item) => {
-  //   setCart((prev) => prev.filter((prevItem) => prevItem.id !== item.id));
-  // };
+  // console.log(items);
 
   const addItemToCart = (item) => {
     const storeItem = items.find((element) => element.id === item.id);
-    console.log(storeItem);
     const cartItem = cart.find((element) => element.id === item.id);
 
     if (storeItem.quantity === 0) return;
@@ -49,6 +39,7 @@ export const StoreProvider = ({ children }) => {
         image: item.image,
         quantity: 1,
       };
+
       setCart([...cart, newCartItem]);
     }
   };
@@ -100,7 +91,6 @@ export const StoreProvider = ({ children }) => {
   }, []);
 
   const value = {
-    items,
     cart,
     addItemToCart,
     deleteItemFromCart,

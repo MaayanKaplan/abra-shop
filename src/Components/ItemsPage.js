@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import Title from "../Common/Title";
 import ItemCard from "./ItemCard";
+import Spinner from "../Common/Spinner";
 import { deviceSize } from "../Utils/constants";
 import { StoreContext } from "../Services/Provider";
 
@@ -37,7 +38,10 @@ const ItemsPage = ({ category, title, ...props }) => {
           </ItemsWrapper>
         </>
       ) : (
-        <p>Loading...</p>
+        <>
+          <Spinner />
+          <p>Loading...</p>
+        </>
       )}
     </Container>
   );

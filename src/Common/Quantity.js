@@ -1,20 +1,7 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import { deviceSize } from "../Utils/constants";
 
-const Quantity = () => {
-  const [quantity, setQuantity] = useState(0);
-
-  const decrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity - 1);
-    if (quantity <= 0) {
-      setQuantity(0);
-    }
-  };
-
-  const incrementQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  };
+const Quantity = ({ quantity, incrementQuantity, decrementQuantity }) => {
   return (
     <QuantityWrapper>
       <StyledButton onClick={decrementQuantity}>-</StyledButton>

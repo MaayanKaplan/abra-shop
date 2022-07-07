@@ -16,9 +16,9 @@ export const ItemsList = () => {
           name={item.name}
           price={item.price}
           quantity={item.quantity}
-          deleteItem={deleteItemFromCart(item, true)}
-          decrementQuantity={deleteItemFromCart(item)}
-          incrementQuantity={addItemToCart(item)}
+          // deleteItem={deleteItemFromCart(item, true)}
+          // decrementQuantity={deleteItemFromCart(item)}
+          // incrementQuantity={addItemToCart(item)}
         />
       ))}
     </StyledCartItemsWrapper>
