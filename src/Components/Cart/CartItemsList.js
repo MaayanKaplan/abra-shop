@@ -11,14 +11,15 @@ export const ItemsList = () => {
     <StyledCartItemsWrapper>
       {cart.map((item) => (
         <CartItem
+          item={item}
           key={item.id}
           image={item.image}
           name={item.name}
           price={item.price}
           quantity={item.quantity}
-          // deleteItem={deleteItemFromCart(item, true)}
-          // decrementQuantity={deleteItemFromCart(item)}
-          // incrementQuantity={addItemToCart(item)}
+          deleteItem={() => deleteItemFromCart(item, true)}
+          decrementQuantity={() => deleteItemFromCart(item)}
+          incrementQuantity={() => addItemToCart(item)}
         />
       ))}
     </StyledCartItemsWrapper>

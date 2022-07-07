@@ -12,14 +12,11 @@ export const StoreProvider = ({ children }) => {
       const res = await fetch(SERVER_URL + "/" + ITEMS_ENDPOINT);
       const data = await res.json();
       setItems(data);
-      // console.log(items);
       return data;
     } catch (error) {
       console.error(error);
     }
   };
-
-  // console.log(items);
 
   const addItemToCart = (item) => {
     const storeItem = items.find((element) => element.id === item.id);
@@ -28,7 +25,6 @@ export const StoreProvider = ({ children }) => {
     if (storeItem.quantity === 0) return;
     if (cartItem) {
       if (storeItem.quantity === cartItem.quantity) return;
-
       cartItem.quantity++;
       setCart([...cart]);
     } else {
@@ -39,7 +35,6 @@ export const StoreProvider = ({ children }) => {
         image: item.image,
         quantity: 1,
       };
-
       setCart([...cart, newCartItem]);
     }
   };
@@ -66,7 +61,6 @@ export const StoreProvider = ({ children }) => {
       if (cartItem) {
         newItem.quantity -= cartItem.quantity;
       }
-
       return newItem;
     });
   }, [items, cart]);
@@ -78,10 +72,8 @@ export const StoreProvider = ({ children }) => {
       if (cartItem) {
         newItem.quantity -= cartItem.quantity;
       }
-
       return newItem;
     });
-
     setItems(newItems);
     setCart([]);
   };

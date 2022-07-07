@@ -9,6 +9,7 @@ const CartItem = ({
   price,
   quantity,
   deleteItem,
+  item,
   decrementQuantity,
   incrementQuantity,
   ...props
@@ -20,9 +21,9 @@ const CartItem = ({
         <StyledCartItemTitle>{name}</StyledCartItemTitle>
         <StyledCartItemPrice>{price} ILS</StyledCartItemPrice>
         <Quantity
-        // quantity={quantity}
-        // decrementQuantity={decrementQuantity}
-        // incrementQuantity={incrementQuantity}
+          quantity={quantity}
+          decrementQuantity={decrementQuantity}
+          incrementQuantity={incrementQuantity}
         />
       </StyledCartItemDetailsWrapper>
       <StyledDeleteButtonImage onClick={deleteItem} src={DeleteButtonImage} />
@@ -93,6 +94,24 @@ const StyledDeleteButtonImage = styled.img`
     top: 8px;
     right: 8px;
   } ;
+`;
+
+//  **** CHANGES ****** //
+
+const StyledCartItemQuantity = styled.span`
+  color: #808285;
+  margin-top: auto;
+  @media (max-width: ${deviceSize.mobile}) {
+    margin-top: 12px;
+  }
+`;
+
+const StyledQuantity = styled.button`
+  cursor: pointer;
+  color: #808285;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
 `;
 
 export default CartItem;

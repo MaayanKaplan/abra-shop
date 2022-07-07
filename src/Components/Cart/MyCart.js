@@ -97,6 +97,7 @@ const CartItemsWrapper = styled.div`
   }
 `;
 const StyledCheckoutWrapper = styled.div`
+  margin-top: auto;
   @media (max-width: ${deviceSize.mobile}) {
     padding: 0px 18px;
   }

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { deviceSize } from "../Utils/constants";
 
-const Quantity = ({ quantity, incrementQuantity, decrementQuantity }) => {
+const Quantity = ({ quantity, decrementQuantity, incrementQuantity }) => {
   return (
     <QuantityWrapper>
       <StyledButton onClick={decrementQuantity}>-</StyledButton>
