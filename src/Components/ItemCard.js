@@ -1,24 +1,18 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "../Common/Button";
 import { deviceSize } from "../Utils/constants";
-import { AppContext } from "../App";
 
-const ItemCard = ({ item, ...props }) => {
-  const setItems = useContext(AppContext);
-
-  const addItem = () => {
-    setItems((prev) => [...prev, item]);
-  };
-
-  console.log(setItems);
-
+const ItemCard = ({ image, name, price, quantity, addToBag, ...props }) => {
   return (
-    <ItemWrapper key={item.id}>
-      <ImageWrapper src={item.image}></ImageWrapper>
-      <SubTitle>{item.name}</SubTitle>
-      <Pricing>{item.price} ILS</Pricing>
-      <Button onClick={addItem}>ADD TO BAG</Button>
+    <ItemWrapper>
+      <ImageWrapper src={image}></ImageWrapper>
+      <SubTitle>{name}</SubTitle>
+      <Pricing>{price} ILS</Pricing>
+      {quantity !== 0 ? (
+        <Button onClick={addToBag}>ADD TO BAG</Button>
+      ) : (
+        <Button disabled>SOLD OUT</Button>
+      )}
     </ItemWrapper>
   );
 };

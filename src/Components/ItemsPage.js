@@ -1,33 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import Title from "../Common/Title";
 import ItemCard from "./ItemCard";
 import { deviceSize } from "../Utils/constants";
+import { StoreContext } from "../Services/Provider";
 
-const SERVER_URL = "https://elad-test-1.s3.amazonaws.com/items.json";
-
-const ItemsPage = ({ category, title, items, ...props }) => {
-  const [data, setData] = useState([]);
+const ItemsPage = ({ category, title, ...props }) => {
+  const { storeItems, addItemToCart } = useContext(StoreContext);
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(SERVER_URL);
-        const data = await res.json();
-        setData(data);
-        return data;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const newData = data.filter((item) => item.catagories.includes(category));
+    const newData = storeItems.filter((item) =>
+      item.catagories.includes(category)
+    );
     setFilteredData(newData);
-  }, [category, setFilteredData, data]);
+  }, [category, setFilteredData, storeItems]);
 
   return (
     <Container>
@@ -36,7 +23,16 @@ const ItemsPage = ({ category, title, items, ...props }) => {
           <Title>{title}</Title>
           <ItemsWrapper>
             {filteredData.map((item) => {
-              return <ItemCard item={item} />;
+              return (
+                <ItemCard
+                  key={item.id}
+                  image={item.image}
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                  addToBag={() => addItemToCart(item)}
+                />
+              );
             })}
           </ItemsWrapper>
         </>
