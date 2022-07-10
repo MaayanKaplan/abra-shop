@@ -7,6 +7,8 @@ import ItemsPage from "./Components/ItemsPage";
 import styled from "styled-components";
 import { StoreProvider } from "./Services/Provider";
 
+import { DefaultMenuConfig } from "./Utils/DefaultMenuConfig";
+
 function App() {
   return (
     <div className="App">
@@ -17,35 +19,16 @@ function App() {
         <StoreProvider>
           <Container>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <ItemsPage category="best-seller" title="Best sellers" />
-                }
-              />
-
-              <Route
-                path="/best-seller"
-                element={
-                  <ItemsPage category="best-seller" title="Best sellers" />
-                }
-              />
-              <Route
-                path="/clothing"
-                element={<ItemsPage category="clothing" title="Clothing" />}
-              />
-              <Route
-                path="/home"
-                element={<ItemsPage category="home" title="Home" />}
-              />
-              <Route
-                path="/office"
-                element={<ItemsPage category="office" title="Office" />}
-              />
-              <Route
-                path="/sports"
-                element={<ItemsPage category="sports" title="Sports" />}
-              />
+              {DefaultMenuConfig.map((item) => {
+                return (
+                  <Route
+                    path={item.path}
+                    element={
+                      <ItemsPage category={item.category} title={item.name} />
+                    }
+                  />
+                );
+              })}
             </Routes>
             <MyCart />
           </Container>
