@@ -2,7 +2,7 @@ import styled from "styled-components";
 import LogoImage from "../Images/logo-black.png";
 import closeIcon from "../Images/x-icon.png";
 import logoutImage from "../Images/logout.svg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
 
 const menuLinks = DefaultMenuConfig;
@@ -70,14 +70,17 @@ const LinkWrapper = styled.div`
   gap: 4px;
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
   font-family: Assistant;
   font-size: 20px;
-  font-weight: ${(props) => (props.active ? "600" : "normal")};
   color: #1a223e;
   margin-bottom: 26px;
   cursor: pointer;
   text-decoration: none;
+
+  &.active {
+    font-weight: 600;
+  }
 `;
 
 const Rectangle = styled.span`

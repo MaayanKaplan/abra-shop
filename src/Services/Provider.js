@@ -82,6 +82,12 @@ export const StoreProvider = ({ children }) => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  JSON.stringify({});
+
   const value = {
     cart,
     addItemToCart,

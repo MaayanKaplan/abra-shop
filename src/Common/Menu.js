@@ -5,7 +5,7 @@ import MobileMenu from "../Common/MobileMenu";
 import Drawer from "../Common/Drawer";
 import menuImg from "../Images/menu.png";
 import { DefaultMenuConfig } from "../Utils/DefaultMenuConfig";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const menuLinks = DefaultMenuConfig;
 
@@ -63,16 +63,15 @@ const Menu = ({
   );
 };
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
   font-size: 20px;
-  font-weight: ${(props) => (props.active ? "600" : "normal")};
   text-decoration: none;
-  ${(props) =>
-    props.active &&
-    `
-    border-bottom: 2px solid #fff;
-    `}
   color: #fff;
+
+  &.active {
+    border-bottom: 2px solid #fff;
+    font-weight: 600;
+  }
 `;
 const MenuWrapper = styled.nav`
   font-family: Assistant;
