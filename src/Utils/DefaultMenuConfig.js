@@ -1,7 +1,8 @@
 export const DefaultMenuConfig = [
+  { id: 0, name: "Best sellers", path: "/", category: "best-seller" },
   {
     id: 1,
-    name: "Best Sellers",
+    name: "Best sellers",
     path: "/best-seller",
     category: "best-seller",
   },

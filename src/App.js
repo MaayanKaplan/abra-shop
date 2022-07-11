@@ -6,7 +6,6 @@ import { Route, Routes } from "react-router-dom";
 import ItemsPage from "./Components/ItemsPage";
 import styled from "styled-components";
 import { StoreProvider } from "./Services/Provider";
-
 import { DefaultMenuConfig } from "./Utils/DefaultMenuConfig";
 
 function App() {
@@ -22,6 +21,7 @@ function App() {
               {DefaultMenuConfig.map((item) => {
                 return (
                   <Route
+                    key={item.id}
                     path={item.path}
                     element={
                       <ItemsPage category={item.category} title={item.name} />

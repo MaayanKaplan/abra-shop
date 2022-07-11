@@ -102,6 +102,7 @@ const LogoutWrapper = styled.div`
 
   p {
     color: #808285;
+    font-size: 16px;
   }
 `;
 

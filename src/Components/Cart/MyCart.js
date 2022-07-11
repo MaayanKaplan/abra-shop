@@ -58,6 +58,7 @@ const StyledCartWrapper = styled.div`
   font-family: Assistant;
   height: calc(100vh - 78px);
   position: relative;
+  margin-left: 24px;
 
   @media (max-width: ${deviceSize.mobile}) {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.16);
