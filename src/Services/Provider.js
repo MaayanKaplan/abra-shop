@@ -52,12 +52,9 @@ export const StoreProvider = ({ children }) => {
 
     cartItem.quantity--;
     if (cartItem.quantity <= 0 || forceDelete) {
-      // const updatedCart = cart.filter((element) => element.id !== item.id);
       cartCopy = cartCopy.filter((element) => element.id !== item.id);
       setCart(cartCopy);
-      // localStorage.setItem("cart", JSON.stringify(updatedCart));
-      // localStorage.setItem("cart", JSON.stringify(cartCopy));
-      // setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(cartCopy));
     } else {
       setCart([...cart]);
       localStorage.setItem("cart", JSON.stringify(cartCopy));
