@@ -18,6 +18,12 @@ function App() {
         <StoreProvider>
           <Container>
             <Routes>
+              <Route
+                path="/"
+                element={
+                  <ItemsPage category="best-seller" title="Best sellers" />
+                }
+              />
               {DefaultMenuConfig.map((item) => {
                 return (
                   <Route

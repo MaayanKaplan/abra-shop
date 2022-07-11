@@ -6,6 +6,7 @@ export const StoreContext = createContext([]);
 export const StoreProvider = ({ children }) => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState([]);
+  let localCart = localStorage.getItem("cart");
 
   const fetchData = async () => {
     try {
@@ -21,12 +22,13 @@ export const StoreProvider = ({ children }) => {
   const addItemToCart = (item) => {
     const storeItem = items.find((element) => element.id === item.id);
     const cartItem = cart.find((element) => element.id === item.id);
+    let cartCopy = [...cart];
 
     if (storeItem.quantity === 0) return;
     if (cartItem) {
       if (storeItem.quantity === cartItem.quantity) return;
       cartItem.quantity++;
-      setCart([...cart]);
+      // setCart([...cart]);
     } else {
       const newCartItem = {
         name: item.name,
@@ -35,21 +37,30 @@ export const StoreProvider = ({ children }) => {
         image: item.image,
         quantity: 1,
       };
-      setCart([...cart, newCartItem]);
+      cartCopy.push(newCartItem);
+      // setCart([...cart, newCartItem]);
     }
+    setCart(cartCopy);
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
   };
 
   const deleteItemFromCart = (item, forceDelete = false) => {
     const cartItem = cart.find((element) => element.id === item.id);
+    let cartCopy = [...cart];
 
     if (!cartItem) return;
 
     cartItem.quantity--;
     if (cartItem.quantity <= 0 || forceDelete) {
-      const updatedCart = cart.filter((element) => element.id !== item.id);
-      setCart(updatedCart);
+      // const updatedCart = cart.filter((element) => element.id !== item.id);
+      cartCopy = cartCopy.filter((element) => element.id !== item.id);
+      setCart(cartCopy);
+      // localStorage.setItem("cart", JSON.stringify(updatedCart));
+      // localStorage.setItem("cart", JSON.stringify(cartCopy));
+      // setCart(updatedCart);
     } else {
       setCart([...cart]);
+      localStorage.setItem("cart", JSON.stringify(cartCopy));
     }
   };
 
@@ -83,10 +94,9 @@ export const StoreProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
-  JSON.stringify({});
+    let localCartParsed = JSON.parse(localCart);
+    if (localCartParsed) setCart(localCartParsed);
+  }, [localCart]);
 
   const value = {
     cart,

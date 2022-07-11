@@ -66,6 +66,7 @@ const StyledCartWrapper = styled.div`
     flex-basis: 393px;
     z-index: 5;
     padding: 24px 0 0;
+    margin-left: 0;
   }
 `;
 

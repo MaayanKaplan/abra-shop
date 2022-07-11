@@ -5,11 +5,12 @@ import { deviceSize } from "../../Utils/constants";
 import { StoreContext } from "../../Services/Provider";
 
 export const ItemsList = () => {
-  const { cart, addItemToCart, deleteItemFromCart } = useContext(StoreContext);
+  const { addItemToCart, deleteItemFromCart } = useContext(StoreContext);
+  const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart"));
 
   return (
     <StyledCartItemsWrapper>
-      {cart.map((item) => (
+      {cartFromLocalStorage.map((item) => (
         <CartItem
           item={item}
           key={item.id}
