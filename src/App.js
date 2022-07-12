@@ -19,7 +19,7 @@ function App() {
           <Container>
             <Routes>
               <Route
-                path="/"
+                path="*"
                 element={
                   <ItemsPage category="best-seller" title="Best sellers" />
                 }
