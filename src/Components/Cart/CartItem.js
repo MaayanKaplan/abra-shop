@@ -36,12 +36,9 @@ const StyledCartItemWrapper = styled.div`
   font-size: 20px;
   line-height: 1;
   display: flex;
-  /* gap: 11px; */
   position: relative;
 
   @media (max-width: ${deviceSize.mobile}) {
-    /* gap: 0px; */
-    /* width: 125px; */
     flex-direction: column;
     font-size: 16px;
     margin-bottom: 28px;
@@ -56,7 +53,6 @@ const StyledCartItemImage = styled.img`
     min-width: 125px;
     min-height: 125px;
     display: inline-block;
-    /* object-fit: contain; */
   } ;
 `;
 

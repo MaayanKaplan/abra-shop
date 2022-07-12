@@ -10,8 +10,9 @@ export const StoreProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(SERVER_URL + "/" + ITEMS_ENDPOINT);
-      const data = await res.json();
+      const data = await (
+        await fetch(SERVER_URL + "/" + ITEMS_ENDPOINT)
+      ).json();
       setItems(data);
       return data;
     } catch (error) {
@@ -28,7 +29,6 @@ export const StoreProvider = ({ children }) => {
     if (cartItem) {
       if (storeItem.quantity === cartItem.quantity) return;
       cartItem.quantity++;
-      // setCart([...cart]);
     } else {
       const newCartItem = {
         name: item.name,
@@ -38,7 +38,6 @@ export const StoreProvider = ({ children }) => {
         quantity: 1,
       };
       cartCopy.push(newCartItem);
-      // setCart([...cart, newCartItem]);
     }
     setCart(cartCopy);
     localStorage.setItem("cart", JSON.stringify(cartCopy));
@@ -56,7 +55,7 @@ export const StoreProvider = ({ children }) => {
       setCart(cartCopy);
       localStorage.setItem("cart", JSON.stringify(cartCopy));
     } else {
-      setCart([...cart]);
+      setCart(cartCopy);
       localStorage.setItem("cart", JSON.stringify(cartCopy));
     }
   };
